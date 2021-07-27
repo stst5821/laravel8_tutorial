@@ -5,8 +5,39 @@ https://qiita.com/ucan-lab/items/56c9dc3cf2e6762672f4
 nginx 1.18  
 php 7.4.16  
 composer導入済み  
+
+## コンテナの名前を変更する
+
+このテンプレを使ってコンテナを作っていた場合、
+コンテナ名がかぶって起動できなくなるので、コンテナ名を変更する必要がある。
+
+[変更箇所]
+
+- docker-compose.yml
+
+```
+services:
+サービス名（app,web,db）を変更する。
+
+※container_name: db　が書かれていると、こちらの名前が優先されてしまうので、
+記述そのものを消すか、名前を変更する。
+```
+
+- default.conf
+
+```
+location ~ \.php$ {
+        fastcgi_pass app:9000; // ←ここの「app」をdocker-compose.ymlで変更したappのコンテナ名と同じにする。（app→testAppに変更したなら、こちらもtestAppに変える。）
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+```
+
+## コンテナ起動方法
+
+docker-compose up -d
   
-あとは以下の流れで好きなlaravelのverを入れればOK
+## laravel導入
   
 docker-compose exec [コンテナ名] bash  
 composer create-project --prefer-dist "laravel/laravel=７.*" .  
