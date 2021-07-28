@@ -4,7 +4,11 @@ https://qiita.com/ucan-lab/items/56c9dc3cf2e6762672f4
 コンテナ  
 nginx 1.18  
 php 7.4.16  
-composer導入済み  
+composer導入済み 
+npm導入済み
+
+npm導入参考サイト：  
+https://tsyama.hatenablog.com/entry/docker-not-found-npm
 
 ## コンテナの名前を変更する
 
