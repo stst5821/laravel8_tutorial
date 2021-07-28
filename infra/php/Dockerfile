@@ -33,6 +33,15 @@ RUN apt-get update && \
 # https://matsuand.github.io/docs.docker.jp.onthefly/engine/reference/builder/#copy
 COPY ./php.ini /usr/local/etc/php/php.ini
 
+# npm導入
+RUN apt-get -y update
+RUN apt-get install -y \
+    curl \
+    gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install npm@latest -g
+
 # ワークディレクトリを設定
 # https://matsuand.github.io/docs.docker.jp.onthefly/engine/reference/builder/#workdir
 WORKDIR /work
