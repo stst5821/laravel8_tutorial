@@ -53,5 +53,5 @@ appコンテナに入り、
 `find -name ".DS_Store" -delete`  
 で削除してから、再度実行すると、インストールできる。  
   
-以下のサイトを開き、laravelのトップ画面が開けばOK    
-http://127.0.0.1:10080/
+以下のサイトを開き、laravelのトップ画面が開けばOK 
+http://localhost:8080/
