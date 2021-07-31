@@ -22,12 +22,12 @@ COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 # 実際のパッケージのインストール、アップグレードなどは行いません。
 RUN apt-get update && \
   # apt-get -y install xxx Laravelのインストールに必要なパッケージをインストールします。
-  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev && \
+  apt-get -y install git unzip libpq-dev libzip-dev libicu-dev libonig-dev && \
   # apt-get clean && rm -rf /var/lib/apt/lists/* ここはパッケージインストールで使用したキャッシュファイルを削除しています。
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   # PHPの拡張ライブラリをインストールしています。
-  docker-php-ext-install intl pdo_mysql zip bcmath
+  docker-php-ext-install intl pdo_pgsql zip bcmath
 
 # php.iniをコピー
 # https://matsuand.github.io/docs.docker.jp.onthefly/engine/reference/builder/#copy
