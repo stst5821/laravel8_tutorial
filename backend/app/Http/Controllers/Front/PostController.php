@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -16,9 +16,9 @@ class PostController extends Controller
     {
         // 後悔・新しい順に表示
         $posts = Post::where('is_public', true)
-            ->orderby('published_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->paginate(10);
-
+             
         return view('front.posts.index', compact('posts'));
     }
 
@@ -38,7 +38,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }

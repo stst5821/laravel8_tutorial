@@ -45,9 +45,9 @@ class RouteServiceProvider extends ServiceProvider
 
             // フロント画面
             Route::middleware('web')
-                ->namespace($this->namespace . '\Front')
-                ->as('front.') // リンクを設定するときのルート名
-                ->group(base_path('routes/front.php'));
+            ->namespace($this->namespace . '\Front')
+            ->as('front.')
+            ->group(base_path('routes/front.php'));
             
             // 管理画面
             Route::prefix('admin')
